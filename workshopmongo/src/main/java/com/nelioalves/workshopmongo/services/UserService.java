@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 import com.nelioalves.workshopmongo.domain.User;
 import com.nelioalves.workshopmongo.repository.UserRepository;
 
-import jakarta.annotation.PostConstruct;
-
 @Service
 public class UserService {
 	
@@ -22,12 +20,6 @@ public class UserService {
 		
 	}
 	
-	
-
-	@PostConstruct
-	public void debugMongo() {
-	    System.out.println("🔥 USERS NO BANCO: " + repository.findAll().size());
-	}
 
 
 }
