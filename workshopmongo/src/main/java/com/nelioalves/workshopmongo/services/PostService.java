@@ -1,5 +1,9 @@
 package com.nelioalves.workshopmongo.services;
 
+import java.time.Duration;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,4 +30,9 @@ public class PostService {
 		return repository.searchTitle(text);
 	}
 	
+	public List <Post> fullSearch (String text, LocalDate minDate, LocalDate maxDate){
+		Instant minInstant = minDate.atStartOfDay(ZoneOffset.UTC).toInstant();
+		Instant maxInstant = maxDate.plusDays(1).atStartOfDay(ZoneOffset.UTC).toInstant();
+		return repository.fullSearch(text, minInstant, maxInstant);
+		}
 }
